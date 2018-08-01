@@ -128,11 +128,11 @@ int main(){
 					double sidea = 0;
 					double sideb = 0;
 					double sidec = 0;
-					cout << "Ingrese la medida del Lado a: (Cateto Corto)" << endl;
+					cout << "Ingrese la medida del Lado a: (Cateto)" << endl;
 					cin >> sidea;
 					cout << "Ingrese la medida del Lado b: (Hipotenusa) " << endl;
 					cin >> sideb;
-					cout << "Ingrese la medida del Lado c: (Cateto Largo)" << endl;
+					cout << "Ingrese la medida del Lado c: (Cateto)" << endl;
 					cin >> sidec;
 					ejercicio2(sidea, sideb, sidec);
 					}
