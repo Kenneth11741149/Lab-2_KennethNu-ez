@@ -8,6 +8,11 @@ using std::cin;
 #include <string>
 using std::string;
 using std::to_string;
+
+#include <math.h>
+#define PI 3.14159265
+
+
 int nextImpar(int impar){
 	impar += 2;
 	return impar;
@@ -38,9 +43,48 @@ int ejercicio1(int numero ){
 	}
 } //Fin del metodo ejercicio1
 
-int ejercicio2(double SideA, double SideB, double SideC){
+int ejercicio2(double sidea, double sideb, double sidec){
+	//Declaration of the 3 squares of the sides of the triangles.
+	double doublesidea = pow(sidea,2); 
+	double doublesideb = pow(sideb,2);
+	double doublesidec = pow(sidec,2);
+	//Acumulator is a versatile variable*
+	double acumulator;
+
+	//Attempting to find Alpha, Beta and Gama.
+
+	//Formulas where simplified for immediate calculation.
+	//Finding Beta
+	acumulator = (doublesideb - doublesidea - doublesidec)/(-2 * sidea * sidec);
+	double Beta = acos (acumulator) * 180.0 / PI;
+	//Finding Alpha
+	acumulator = (doublesidea - doublesideb - doublesidec)/(-2 * sideb * sidec);
+	double Alpha = asin (acumulator) * 180.0 / PI;
+	//Finding Gama
+	acumulator = (doublesidec - doublesidea - doublesideb)/ (-2 * sidea * sidec);
+	double Gama = acos (acumulator) * 180.0 / PI;
+		
+
+
+	//Attempting to find the Area of the Triangle.
+
+	//Finding s on the Formula de Area de Heron.
+	double s = (sidea + sideb + sidec) / 2;
+	//Calculating Area
+	double sminusa = (s - sidea);
+	double sminusb = (s - sideb);
+	double sminusc = (s - sidec);
+	acumulator = (s * sminusa * sminusb * sminusc);
+	acumulator = sqrt(acumulator);
 	
+	//Printing results
+	cout << "Alpha "<< Alpha << " Beta = " << Beta << " Gama = " << Gama << endl; 
+	cout << "The area of the Triangle is: " << acumulator << endl;
 	
+
+
+
+
 } //Fin del metodo Ejercicio2
 
 int main(){
@@ -56,25 +100,39 @@ int main(){
 		if(decision < 1 || decision > 3){
 			cout << "Opcion Invalida"<<endl;
 		} else {
-			if(decision == 1){
-				cout << "Que numero desea que se le calcule el cubo?" << endl;
-				int number = 0;
-				cin >> number;
-				ejercicio1(number);
-			} else if (decision == 2){
-				double SideA = 0;
-				double SideB = 0;
-				double SideC = 0;
-				cout << "Ingrese la medida del Lado A: " << endl;
-				cin >> SideA;
-				cout << "Ingrese la medida del Lado B: " << endl;
-				cin >> SideB;
-				cout << "Ingrese la medida del Lado C: " << endl;
-				cin >> SideC;
-				ejercicio2(SideA, SideB, SideC);
-			} else {
+			switch(decision){
+				case 1:
+					{
+					cout << "Que numero desea que se le calcule el cubo?" << endl;
+					int number = 0;
+					cin >> number;
+					ejercicio1(number);
+					}
+					break;
+				case 2:
+					{
+					double sidea = 0;
+					double sideb = 0;
+					double sidec = 0;
+					cout << "Ingrese la medida del Lado a: " << endl;
+					cin >> sidea;
+					cout << "Ingrese la medida del Lado b: (Hipotenusa) " << endl;
+					cin >> sideb;
+					cout << "Ingrese la medida del Lado c: " << endl;
+					cin >> sidec;
+					ejercicio2(sidea, sideb, sidec);
+					}
+					break;
+				case 3:
+					{
 
-			} // Fin del if anidado
+					}
+					break;
+			} //Fin del Switch case.
+
+
+
+			
 			
 		} //Fin del if de validacion de decision
 		cout << "Desea volver al menu[S/N]" <<endl;
