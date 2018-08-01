@@ -57,12 +57,17 @@ int ejercicio2(double sidea, double sideb, double sidec){
 	//Finding Beta
 	acumulator = (doublesideb - doublesidea - doublesidec)/(-2 * sidea * sidec);
 	double Beta = acos (acumulator) * 180.0 / PI;
+	
 	//Finding Alpha
 	acumulator = (doublesidea - doublesideb - doublesidec)/(-2 * sideb * sidec);
 	double Alpha = asin (acumulator) * 180.0 / PI;
+	
+	double Gama = 180.0 - Beta;
+	Gama = Gama - Alpha;
+	/*
 	//Finding Gama
-	acumulator = (doublesidec - doublesidea - doublesideb)/ (-2 * sidea * sidec);
-	double Gama = acos (acumulator) * 180.0 / PI;
+	acumulator = (doublesidec - doublesidea - doublesideb)/(-2 * sidea * sidec);
+	double Gama = acos (acumulator) * 180.0 / PI;*/
 		
 
 
@@ -76,10 +81,19 @@ int ejercicio2(double sidea, double sideb, double sidec){
 	double sminusc = (s - sidec);
 	acumulator = (s * sminusa * sminusb * sminusc);
 	acumulator = sqrt(acumulator);
-	
+	string respuesta = "";
+	int determinant = (int)Beta;
+	if( determinant == 90){
+		respuesta = "El triangulo es Rectangulo.";
+	}else{
+		respuesta = "El triangulo NO es Rectangulo.";
+	}
+
 	//Printing results
 	cout << "Alpha "<< Alpha << " Beta = " << Beta << " Gama = " << Gama << endl; 
+	cout << respuesta << endl;
 	cout << "The area of the Triangle is: " << acumulator << endl;
+	
 	
 
 
@@ -114,11 +128,11 @@ int main(){
 					double sidea = 0;
 					double sideb = 0;
 					double sidec = 0;
-					cout << "Ingrese la medida del Lado a: " << endl;
+					cout << "Ingrese la medida del Lado a: (Cateto Corto)" << endl;
 					cin >> sidea;
 					cout << "Ingrese la medida del Lado b: (Hipotenusa) " << endl;
 					cin >> sideb;
-					cout << "Ingrese la medida del Lado c: " << endl;
+					cout << "Ingrese la medida del Lado c: (Cateto Largo)" << endl;
 					cin >> sidec;
 					ejercicio2(sidea, sideb, sidec);
 					}
