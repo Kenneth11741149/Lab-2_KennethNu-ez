@@ -93,6 +93,7 @@ int ejercicio2(double sidea, double sideb, double sidec){
 	acumulator = sqrt(acumulator);
 	string respuesta = "";
 	int determinant = (int)Beta;
+	
 	if( determinant == 90){
 		respuesta = "El triangulo es Rectangulo.";
 	}else{
@@ -103,6 +104,7 @@ int ejercicio2(double sidea, double sideb, double sidec){
 	cout << "Alpha "<< Alpha << " Beta = " << Beta << " Gama = " << Gama << endl; 
 	cout << respuesta << endl;
 	cout << "The area of the Triangle is: " << acumulator << endl;
+	cout << endl;
 	
 	
 
@@ -135,7 +137,6 @@ int ejercicio3(int numero){
 	for(int i = 1; i <= numero; i++){
 		if( numero % i == 0){
 			divisores[contadordelength] = i;
-			cout << divisores[contadordelength];
 			contadordelength++;
 		}
 	}
@@ -143,7 +144,6 @@ int ejercicio3(int numero){
 		int numerador = numero + divisores[j];
 		int resultadotemporal =  numerador/divisores[j];
 		if( isPrimo(resultadotemporal)){
-			cout << "souting: "<<resultadotemporal;
 			sumador += resultadotemporal;
 		}
 	}
@@ -179,11 +179,11 @@ int main(){
 					double sidea = 0;
 					double sideb = 0;
 					double sidec = 0;
-					cout << "Ingrese la medida del Lado a: " << endl;
-					cin >> sidea;
-					cout << "Ingrese la medida del Lado b: " << endl;
+					cout << "Ingrese la medida del Lado b: (Hipotenusa)" << endl;
 					cin >> sideb;
-					cout << "Ingrese la medida del Lado c: " << endl;
+					cout << "Ingrese la medida del Lado a: (Cateto) " << endl;
+					cin >> sidea;
+					cout << "Ingrese la medida del Lado c: (Cateto)" << endl;
 					cin >> sidec;
 					ejercicio2(sidea, sideb, sidec);
 					}
