@@ -12,6 +12,16 @@ using std::to_string;
 #include <math.h>
 #define PI 3.14159265
 
+int numDivisores(int numero){
+	int contadordedivisores = 0;
+	for(int i = 1; i <= numero; i++){
+		if( numero % i == 0){
+			contadordedivisores++;
+		}
+	}
+	return contadordedivisores;
+}
+
 
 int nextImpar(int impar){
 	impar += 2;
@@ -101,6 +111,47 @@ int ejercicio2(double sidea, double sideb, double sidec){
 
 } //Fin del metodo Ejercicio2
 
+bool isPrimo(int numero){
+	int contador = 0;
+	for(int i = 1; i <= numero; i++){
+		if( numero % i == 0){
+			contador++;
+		}
+	}
+
+	if(contador == 2){
+		return true;
+	} else {
+		return false;
+	}
+} //Fin del metodo isPrimo
+
+int ejercicio3(int numero){
+	int sumador = 0;
+	int contadordelength = 0;
+	int numdivisores;
+	numdivisores = numDivisores(numero);
+	int divisores[numdivisores];
+	for(int i = 1; i <= numero; i++){
+		if( numero % i == 0){
+			divisores[contadordelength] = i;
+			cout << divisores[contadordelength];
+			contadordelength++;
+		}
+	}
+	for(int j = 0; j < numdivisores; j++){
+		int numerador = numero + divisores[j];
+		int resultadotemporal =  numerador/divisores[j];
+		if( isPrimo(resultadotemporal)){
+			cout << "souting: "<<resultadotemporal;
+			sumador += resultadotemporal;
+		}
+	}
+	cout << "El resultado es: " << sumador << endl;
+	
+}
+
+
 int main(){
 	char resp = 's';
 	while( resp == 'S' || resp == 's'){
@@ -128,18 +179,21 @@ int main(){
 					double sidea = 0;
 					double sideb = 0;
 					double sidec = 0;
-					cout << "Ingrese la medida del Lado a: (Cateto)" << endl;
+					cout << "Ingrese la medida del Lado a: " << endl;
 					cin >> sidea;
-					cout << "Ingrese la medida del Lado b: (Hipotenusa) " << endl;
+					cout << "Ingrese la medida del Lado b: " << endl;
 					cin >> sideb;
-					cout << "Ingrese la medida del Lado c: (Cateto)" << endl;
+					cout << "Ingrese la medida del Lado c: " << endl;
 					cin >> sidec;
 					ejercicio2(sidea, sideb, sidec);
 					}
 					break;
 				case 3:
 					{
-
+					cout << "Ingrese el numero N: " << endl;
+					int ene;
+					cin >> ene;
+					ejercicio3(ene);			
 					}
 					break;
 			} //Fin del Switch case.
