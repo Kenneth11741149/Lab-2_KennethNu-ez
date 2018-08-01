@@ -93,8 +93,7 @@ int ejercicio2(double sidea, double sideb, double sidec){
 	acumulator = sqrt(acumulator);
 	string respuesta = "";
 	int determinant = (int)Beta;
-	
-	if( determinant == 90){
+	if( doublesideb == (doublesidea + doublesidec)){
 		respuesta = "El triangulo es Rectangulo.";
 	}else{
 		respuesta = "El triangulo NO es Rectangulo.";
